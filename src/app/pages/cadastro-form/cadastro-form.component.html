@@ -1,0 +1,391 @@
+<form [formGroup]="formulario" novalidate class="d-flex flex-column align-items-center">
+    
+    <div class="content-titles m-2">
+
+        <div class="content-titles">
+            <h1 class="fw-bold custom-title">LANÇAMENTO DE BOLSAS</h1>
+        </div>
+
+    </div>
+
+    <div class="custom-card w-100">
+
+        <!--DropDown, seleção de projeto-->
+        <div class="mb-3 custom-input-group">
+            <label class="form-label" for="">Selecione o projeto <span class="text-danger">*</span></label>
+            <select
+                name="projetos"
+                formControlName="projeto"
+                name="projeto" 
+                class="form-control custom-input"
+                required
+            >
+                
+                <option value="" disabled selected hidden>--PROJETO--</option>
+                @for (item of projetos; track $index) {
+                    <option [value]="item">{{item}}</option>
+                }
+
+            </select>
+
+            @if (formulario.get('projeto')?.invalid && formulario.get('projeto')?.touched) {
+                <div class="error-message d-flex align-items-center">
+                    <i class="ph ph-warning-circle"></i>
+                    <p class="m-0">Projeto não selecionado.</p>
+                </div>
+            }
+        </div>
+
+        <div class="d-flex w-100 gap-3">
+
+            <div class="flex-grow-1">
+            <!-- Nome -->
+                <div class="mb-3 custom-input-group">
+
+                    <label for="nome" class="form-label">Nome <span class="text-danger">*</span></label>
+
+                    <input  
+                        formControlName="nome"
+                        name="nome"    
+                        minlength="5" 
+                        maxlength="50" 
+                        required 
+                        id="nome" 
+                        type="text" 
+                        class="form-control custom-input" 
+                        placeholder="Nome do aluno"
+                    >
+                    
+                    @if (formulario.get('nome')?.invalid && (formulario.get('nome')?.touched)) {
+                        <div class="error-message d-flex align-items-center">
+                            <div class="error-message d-flex align-items-center">
+                                <i class="ph ph-warning-circle"></i>
+                                <p class="m-0">Nome é obrigatório.</p>
+                            </div>
+                        
+                        </div>
+                    }
+                </div>  
+
+            </div>
+
+            <div class="flex-grow-1">
+               <div [formGroup]="formulario" class="mb-3 custom-input-group">
+                    <label for="cpf" class="form-label">CPF <span class="text-danger">*</span></label>
+                    <input
+                        formControlName="cpf"
+                        type="text"
+                        id="cpf"
+                        name="cpf"
+                        maxlength="14"
+                        placeholder="000.000.000-00"
+                        mask="000.000.000-00"
+                        [dropSpecialCharacters]="false"
+                        class="form-control custom-input"
+                    />
+
+                    @if (formulario.get('cpf')?.invalid && formulario.get('cpf')?.touched  ) {
+                        <div class="error-message d-flex align-items-center">
+                        <i class="ph ph-warning-circle"></i>
+                        <p class="m-0">CPF é obrigatório</p>
+                        </div>
+                    }
+                    
+                </div>
+            </div>
+        
+        </div>
+        
+        <!-- TELFONE E EMAIL -->
+        <div class="d-flex w-100 gap-3">
+
+            <div class="flex-grow-1">
+            <!-- Nome -->
+                <div class="mb-3 custom-input-group">
+
+                    <label for="email" class="form-label">E-mail <span class="text-danger">*</span></label>
+
+                    <input  
+                        type="email"
+                        formControlName="email"
+                        class="form-control custom-input" 
+                        placeholder="seuemail@exemplo.com"
+                    >
+                    
+                    @if (formulario.get('email')?.invalid && (formulario.get('email')?.touched)) {
+                        <div class="error-message d-flex align-items-center">
+                            <div class="error-message d-flex align-items-center">
+                                <i class="ph ph-warning-circle"></i>
+                                <p class="m-0">E-mail é obrigatório.</p>
+                            </div>
+                        
+                        </div>
+                    }
+                </div>  
+
+            </div>
+
+            <div class="flex-grow-1">
+               <div [formGroup]="formulario" class="mb-3 custom-input-group">
+                    <label for="telefone" class="form-label">Telefone <span class="text-danger">*</span></label>
+                    <input
+                        formControlName="telefone"
+                        type="text"
+                        id="telefone"
+                        name="telefone"
+                        placeholder="(34) 3239-7205"
+                        mask="(00) 00000-0000"
+                        [dropSpecialCharacters]="false"
+                        class="form-control custom-input"
+                    />
+
+                    @if ( formulario.get('telefone')?.invalid && formulario.get('telefone')?.touched  ) {
+                        <div class="error-message d-flex align-items-center">
+                        <i class="ph ph-warning-circle"></i>
+                        <p class="m-0">Telefone é obrigatório</p>
+                        </div>
+                    }
+                    
+                </div>
+            </div>
+        
+        </div>
+        
+        <!--Endereco -->
+        <div class="d-flex w-100 gap-3">
+
+            <div class="flex-grow-1">
+                <div  class="mb-3 custom-input-group">
+                    <label for="cep" class="form-label">Cep <span class="text-danger">*</span></label>
+                    <input
+                    formControlName="cep"
+                    type="text"
+                    id="cep"
+                    name="cep"
+                    maxlength="9"
+                    mask="00000-000"
+                    placeholder="00000-000"
+                    [dropSpecialCharacters]="false"
+                    class="form-control custom-input"
+                    />
+                    @if (formulario.get('cep')?.invalid && formulario.get('cep')?.touched) {
+                    <div class="error-message d-flex align-items-center">
+                        <i class="ph ph-warning-circle"></i>
+                        <p class="m-0">CEP é obrigatório</p>
+                    </div>
+                    }
+                </div>
+            </div>
+
+            <div class="flex-grow-1">
+                <div class="mb-3 custom-input-group">
+                    <label for="endereco" class="form-label">Endereço <span class="text-danger">*</span></label>
+                    <input
+                    formControlName="endereco"
+                    name="endereco"
+                    minlength="3"
+                    maxlength="40"
+                    required
+                    id="endereco"
+                    type="text"
+                    class="form-control custom-input"
+                    placeholder="Av, rua ..."
+                    />
+                    @if (formulario.get('endereco')?.invalid && formulario.get('endereco')?.touched) {
+                    <div class="error-message d-flex align-items-center">
+                        <i class="ph ph-warning-circle"></i>
+                        <p class="m-0">Endereço é obrigatório</p>
+                    </div>
+                    }
+                </div>
+            </div>
+
+            <div class="flex-grow-1">
+                <div class="mb-3 custom-input-group">
+                    <label for="numero" class="form-label">Número <span class="text-danger">*</span></label>
+                    <input
+                    formControlName="numero"
+                    name="numero"
+                    minlength="1"
+                    maxlength="5"
+                    required
+                    id="numero"
+                    type="text"
+                    class="form-control custom-input"
+                    placeholder=""
+                    />
+                    @if (formulario.get('numero')?.invalid && formulario.get('numero')?.touched) {
+                        <div class="error-message d-flex align-items-center">
+                            <i class="ph ph-warning-circle"></i>
+                            <p class="m-0">Número é obrigatório</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex w-100 gap-3">
+            <div class="flex-grow-1">
+            <div class="mb-3 custom-input-group">
+                <label for="bairro" class="form-label">Bairro <span class="text-danger">*</span></label>
+                <input
+                formControlName="bairro"
+                name="bairro"
+                minlength="3"
+                maxlength="50"
+                required
+                id="bairro"
+                type="text"
+                class="form-control custom-input"
+                />
+                @if (formulario.get('bairro')?.invalid && formulario.get('bairro')?.touched) {
+                <div class="error-message d-flex align-items-center">
+                    <i class="ph ph-warning-circle"></i>
+                    <p class="m-0">Bairro é obrigatório</p>
+                </div>
+                }
+            </div>
+            </div>
+
+            <div class="flex-grow-3">
+            <div class="mb-3 custom-input-group">
+                <label for="cidade" class="form-label">Cidade <span class="text-danger">*</span></label>
+                <input
+                formControlName="cidade"
+                name="cidade"
+                minlength="3"
+                maxlength="20"
+                required
+                id="cidade"
+                type="text"
+                class="form-control custom-input"
+                />
+                @if (formulario.get('cidade')?.invalid && formulario.get('cidade')?.touched) {
+                <div class="error-message d-flex align-items-center">
+                    <i class="ph ph-warning-circle"></i>
+                    <p class="m-0">Cidade é obrigatória</p>
+                </div>
+                }
+            </div>
+            </div>
+
+            <div class="flex-grow-3">
+            <div class="mb-3 custom-input-group">
+                <label for="estado" class="form-label">Estado <span class="text-danger">*</span></label>
+                <select
+                formControlName="estadoSelecionado"
+                name="estadoSelecionado"
+                id="estadoSelecionado"
+                class="form-control custom-input"
+                required
+                >
+                <option value="" disabled selected hidden>Selecione...</option>
+                @for (item of uf; track $index) {
+                    <option [value]="item">{{ item }}</option>
+                }
+                </select>
+                @if (formulario.get('estadoSelecionado')?.invalid && formulario.get('estadoSelecionado')?.touched) {
+                <div class="error-message d-flex align-items-center">
+                    <i class="ph ph-warning-circle"></i>
+                    <p class="m-0">Estado não selecionado</p>
+                </div>
+                }
+            </div>
+            </div>
+        </div>
+        
+        <!--SEÇÃO PAGAMENTO-->
+        <div class="flex-grow-1">
+
+            <div class="mb-3">
+                <label class="form-label d-block">Tipo de Conta</label>
+
+                <div class="btn-group" role="group" aria-label="Tipo de Conta">
+                    <input
+                    formControlName="tipoConta"
+                    type="radio" 
+                    class="btn-check custom-button" 
+                    name="tipoConta" 
+                    id="btnContaCorrente" 
+                    autocomplete="off" 
+                    value="corrente">
+                    <label class="btn btn-outline-primary custom-button" for="btnContaCorrente">Corrente</label>
+
+                    <input
+                    formControlName="tipoConta"
+                    type="radio" 
+                    class="btn-check custom-button" 
+                    name="tipoConta" 
+                    id="btnContaPoupanca" 
+                    autocomplete="off" 
+                    value="poupanca">
+                    <label class="btn btn-outline-primary custom-button" for="btnContaPoupanca">Poupança</label>
+                </div>
+                
+            </div>
+
+        </div>
+
+        
+
+        <div class="d-flex w-100 gap-3">
+
+            <div class="flex-grow-1">
+
+                <div class="mb-3 custom-input-group">
+                    <label for="tipo" class="form-label">Chave Pix <span class="text-danger">*</span></label>
+                    <input  
+                        formControlName="chavePix"
+                        name="chavePix"
+                        minlength="5" 
+                        maxlength="50" 
+                        required 
+                        id="chavePix" 
+                        type="text" 
+                        class="form-control custom-input" 
+                        placeholder=""
+                    >
+
+                    @if (formulario.get('chavePix')?.touched && formulario.get('chavePix')?.invalid) {
+                        <div class="error-message d-flex align-items-center">
+                            <i class="ph ph-warning-circle"></i>
+                            <p class="m-0">Chave pix é obrigatório</p>
+                        </div>
+                    }
+                        
+                </div>
+
+            </div>
+
+            <div class="flex-grow-1">
+
+                <div class="mb-3 custom-input-group">
+                    <label for="valor" class="form-label">Valor <span class="text-danger">*</span></label>
+                    <input
+                        formControlName ='valor'
+                        currencyMask
+                        [options]="opcoesMoeda" 
+                        name="valor"   
+                        required 
+                        id="valor" 
+                        type="text" 
+                        class="form-control custom-input" 
+                        placeholder="R$ 0,00"
+                    >
+                    @if (formulario.get('valor')?.touched && formulario.get('valor')?.invalid) {
+                        <div class="error-message d-flex align-items-center">
+                            <i class="ph ph-warning-circle"></i>
+                            <p class="m-0">Valor é obrigatório</p>
+                        </div>
+                    }
+                </div>
+
+            </div>
+
+        </div>
+
+        <app-primar-button [disabled]="formulario.invalid" (click)="submit()" [textoBotao1]="'CONFIRMAR'"></app-primar-button>
+    
+    </div>
+
+<form>  

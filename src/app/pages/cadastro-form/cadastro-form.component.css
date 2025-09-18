@@ -1,0 +1,50 @@
+.card-title {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 0;
+    color: #1a2856;
+    margin-bottom: 20px;
+}
+.custom-title {
+    color: #1a2856;
+}
+
+.custom-input {
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 8px 12px;
+    height: 40px;
+}
+
+.custom-input-group {
+    margin-bottom: 20px !important;
+}
+
+label{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+    color: #1a2856;
+}
+
+/* Cor padrão do botão */
+.custom-button {
+  color: #1a2856;
+  border-color: #1a2856;
+}
+
+/* Hover opcional */
+.custom-button:hover {
+    transform: scale(1.03);
+    color: #3b5ac2;
+    border-color: 1px solid #3b5ac2;
+}
+
+/* Cor do botão quando estiver marcado */
+input[type="radio"].btn-check:checked + .custom-button{
+  background:linear-gradient(90deg, rgba(68,151,80,1) 2%, rgba(41,90,146,1) 100%);
+  border-color: #1a2856;
+  color: #fff;
+}
