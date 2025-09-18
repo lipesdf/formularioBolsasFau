@@ -53,6 +53,7 @@ Desenvolver uma **interface web intuitiva** usando **Angular** para facilitar o 
 - CPF com máscara e validação
 - Endereço obrigatório com todos os campos preenchidos
 - Tipo de conta selecionado obrigatoriamente
+- CEP com integração da API ViaCep
 
 ---
 
